@@ -1,0 +1,70 @@
+{
+  "name": "dsh-sidebar-annotations",
+  "version": "0.1.0",
+  "private": false,
+  "type": "module",
+  "license": "MIT",
+  "description": "DSH 右边栏注释插件：网页预览、元素点选、多条折叠注释与页面调试",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-conversation",
+        "@deepseek-ai/dsh-client-ui-slots",
+        "@deepseek-ai/dsh-client-ui-sidebar-right"
+      ]
+    },
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "install:desktop": "node scripts/install.mjs",
+    "test": "node tests/annotation-regression.mjs && node tests/annotation-send.mjs && node tests/picker-interaction.mjs",
+    "prepack": "node scripts/build.mjs"
+  },
+  "files": [
+    "lib/",
+    "src/",
+    "scripts/",
+    "docs/",
+    "cordis.patch.yml",
+    "README.md",
+    "README.en.md",
+    "LICENSE",
+    "THIRD_PARTY_NOTICES.md",
+    "examples/"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zhxnix/dsh-sidebar-annotations.git"
+  },
+  "homepage": "https://github.com/zhxnix/dsh-sidebar-annotations#readme",
+  "bugs": {
+    "url": "https://github.com/zhxnix/dsh-sidebar-annotations/issues"
+  },
+  "author": "zhxnix",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "annotations",
+    "sidebar",
+    "browser"
+  ],
+  "peerDependencies": {
+    "@deepseek-ai/dsh-tools": "^0.1.5-rc.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

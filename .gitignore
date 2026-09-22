@@ -1,0 +1,6 @@
+node_modules/
+.desktop-backup/
+*.tgz
+.DS_Store
+.playwright-cli/
+output/
