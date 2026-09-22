@@ -18,7 +18,7 @@
 import {execFileSync} from 'node:child_process'
 import {lstat, mkdir, readFile, realpath, symlink, unlink, writeFile} from 'node:fs/promises'
 import {homedir} from 'node:os'
-import {isAbsolute, join, resolve} from 'node:path'
+import {join, resolve} from 'node:path'
 import {fileURLToPath} from 'node:url'
 
 const root = resolve(fileURLToPath(new URL('../', import.meta.url)))
@@ -141,7 +141,7 @@ function profilePath(value) {
   if (value === 'desktop' || value === 'web' || value === 'headless') {
     return resolve(join(homedir(), '.dsh', 'profiles', value))
   }
-  return isAbsolute(value) ? resolve(value) : resolve(value)
+  return resolve(value)
 }
 
 async function exists(path) {
